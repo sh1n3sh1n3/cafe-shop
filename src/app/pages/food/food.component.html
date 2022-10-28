@@ -1,0 +1,60 @@
+<div class="bg">
+  <main>
+    <div class="food-title">
+      <h1 class="food-title-f mb-1">Food &nbsp;&nbsp; Menu</h1>
+      <hr />
+    </div>
+    <div class="content">
+      <div fxLayout="row wrap" fxLayoutGap="50px grid">
+        <div
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="32%"
+          *ngFor="let food of Foods"
+        >
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <mat-card-title>{{ food.name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{ food.img }}" />
+            <mat-card-content>
+              <p>
+                {{ food.Details }}
+              </p>
+              <div class="text">Price :- &nbsp;₹{{food.cprice}} &nbsp;<del class="del">₹{{food.price}}</del> &nbsp;<b style="color: green;">{{food.offer}} OFF</b> </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="foodDialog()">
+                <span class="material-symbols-outlined"> redeem </span>
+                Get Discount
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <hr />
+    <div class="food-title">
+      <h1 class="food-title-f mb-1">
+        Find &nbsp;&nbsp; Food &nbsp;&nbsp; Shop
+      </h1>
+      <hr />
+    </div>
+    <div class="map mat-elevation-z7">
+      <iframe
+        fxFlex="grid"
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d204504.7442435719!2d72.76121269664375!3d21.249649002555714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sMcDonald&#39;s%20%2C%20lapinoz%2C%20dominoz%2C%20pizzahut!5e0!3m2!1sen!2sin!4v1665993631196!5m2!1sen!2sin"
+        width="1200"
+        height="580"
+        style="border: 2px"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,69 @@
+<div class="bg">
+  <main>
+    <div class="coffee-title">
+      <h1 class="coffee-title-f mb-1">Coffee &nbsp;&nbsp; Menu</h1>
+      <mat-divider></mat-divider>
+    </div>
+    <div class="content">
+      <div fxLayout="row wrap" fxLayoutGap="50px grid">
+        <div
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="32%"
+          *ngFor="let coffee of Coffees"
+        >
+          <mat-card class="mat-elevation-z6">
+            <mat-card-header>
+              <mat-card-title>{{ coffee.name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{ coffee.img }}" />
+            <mat-card-content>
+              <p>
+                {{ coffee.Details }}
+              </p>
+              <div class="text">
+                Price :- &nbsp;₹{{ coffee.cprice }} &nbsp;<del class="del"
+                  >₹{{ coffee.price }}</del
+                >
+                &nbsp;<b style="color: green">25% OFF</b>
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="coffeeDialog()"
+              >
+                <span class="material-symbols-outlined"> redeem </span>
+                Get Discount
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <hr />
+    <div class="coffee-title">
+      <h1 class="coffee-title-f mb-1">
+        Find &nbsp;&nbsp;Coffee &nbsp;&nbsp; Shop
+      </h1>
+      <hr />
+    </div>
+    <div class="map mat-elevation-z7">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d41487.80008638903!2d72.7715823938654!3d21.177203655126828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks%20or%20cafe!5e0!3m2!1sen!2sin!4v1666887646482!5m2!1sen!2sin"
+        width="1200"
+        height="580"
+        style="border: 2px"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </main>
+</div>

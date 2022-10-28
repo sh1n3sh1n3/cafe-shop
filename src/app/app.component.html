@@ -1,0 +1,173 @@
+<mat-toolbar class="fixed-header color mat-elevation-z15">
+  <!-- <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div> -->
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+
+  <a routerLink="login" routerLinkActive="active">
+    <img src="../assets/header-logos/Groots.png" height="110px" width="120px" /></a>
+
+  <div class="spacer" fxShow="true" fxHide.lt-md="true" fxFlex.xs="100%" fxFlex.sm="33%">
+    <a class="nav-btn" mat-button routerLink="home"><span
+        class="material-symbols-outlined">roofing</span>&nbsp;&nbsp;Home</a>
+    <a class="nav-btn" mat-button routerLink="coffee"><span
+        class="material-symbols-outlined">local_cafe</span>&nbsp;&nbsp;Coffee</a>
+    <a class="nav-btn" mat-button routerLink="tea" ><span
+        class="material-symbols-outlined">coffee</span>&nbsp;&nbsp;Tea</a>
+    <a class="nav-btn" mat-button routerLink="food" ><span
+        class="material-symbols-outlined">local_dining</span>&nbsp;&nbsp;Food</a>
+    <a class="nav-btn" mat-button routerLink="about"><span
+        class="material-symbols-outlined">tour</span>&nbsp;&nbsp;About
+      Us</a>
+  </div>
+
+  <ng-container *ngIf="user$ | async as user; else loginButton">
+    <button mat-raised-button class="nav-btn-login" color="primary" [matMenuTriggerFor]="userMenu">
+      <mat-icon>manage_accounts</mat-icon>
+      {{ user.displayName }}
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </ng-container>
+
+  <mat-menu #userMenu="matMenu">
+    <button class="nav-btn-logout" mat-menu-item routerLink="user-profile">
+      <mat-icon>person</mat-icon>
+      Profile
+    </button>
+    <button class="nav-btn-logout" mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+
+  <ng-template #loginButton>
+    <button mat-raised-button class="nav-btn-login" color="primary" routerLink="login">
+      <mat-icon>arrow_forward_ios</mat-icon>
+      login
+    </button>
+  </ng-template>
+</mat-toolbar>
+
+<!-- ----------------------------------------------------------------------------- side nav ----------------------------------------------------------------- -->
+
+<!-- <mat-sidenav-container fxFlexFill>
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+    <div fxLayout="column">
+      <a class="nav-btn" mat-button routerLink="home"><span
+          class="material-symbols-outlined">roofing</span>&nbsp;&nbsp;Home</a>
+      <a class="nav-btn" mat-button routerLink="coffee" (click)="unauthorize()"><span
+          class="material-symbols-outlined">local_cafe</span>&nbsp;&nbsp;Coffee</a>
+      <a class="nav-btn" mat-button routerLink="tea" (click)="unauthorize()"><span
+          class="material-symbols-outlined">coffee</span>&nbsp;&nbsp;Tea</a>
+      <a class="nav-btn" mat-button routerLink="food" (click)="unauthorize()"><span
+          class="material-symbols-outlined">local_dining</span>&nbsp;&nbsp;Food</a>
+      <a class="nav-btn" mat-button routerLink="about"><span
+          class="material-symbols-outlined">tour</span>&nbsp;&nbsp;About
+        Us</a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content> -->
+<!-- </mat-sidenav-content>
+  </mat-sidenav-container> -->
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" fxHide.gt-sm="true">
+    <img class="logo" src="../assets/image-placeholder.png" (click)="user()">
+
+    <ng-container *ngIf="user$ | async as user">
+      <h4 class="name">{{user.displayName }}</h4>
+    </ng-container>
+
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="home">
+      <span class="material-symbols-outlined">roofing</span>&nbsp;&nbsp;Home
+    </button>
+
+    <button mat-button class="menu-button" routerLink="coffee">
+      <mat-icon>local_cafe</mat-icon>
+      <span>Coffee</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="tea">
+      <mat-icon>coffee</mat-icon>
+      <span>Tea</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="food">
+      <span class="material-symbols-outlined">local_dining</span>
+      <span>Food</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="about">
+      <mat-icon>tour</mat-icon>
+      <span>About Us</span>
+    </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="footer-dark">
+      <footer class="font">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-3 item">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a routerLink="coffee">Coffee</a></li>
+                <li><a routerLink="tea">Tea</a></li>
+                <li><a routerLink="food">Food</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 item">
+              <h3>About</h3>
+              <ul>
+                <li><a routerLink="about">Our Cafe</a></li>
+                <li><a routerLink="about">Team</a></li>
+                <li><a routerLink="about">Careers</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 item text">
+              <h3>Groot's Cafe</h3>
+              <p>
+                <i class="bi bi-caret-right-fill"></i>Sometimes all you need is
+                a cup of good coffee and some great books.
+              </p>
+              <p>
+                <i class="bi bi-caret-right-fill"></i>We make the special ties
+                of friendship grow stronger.
+              </p>
+            </div>
+
+            <!-- <p class="border-end mb-2"></p>
+        <div class="col-sm-1 justify-content-center"></div> -->
+
+            <div class="col item social">
+              <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com/"><i class="bi bi-twitter"></i></a>
+              <a href="https://webz.telegram.org/"><i class="bi bi-telegram"></i></a>
+              <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+          <p class="copyright">© 2022 GROOT'S CAFE<sup>®</sup>. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- ----------------------------------------------------------------------------------------------------------------------- -->

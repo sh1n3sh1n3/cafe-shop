@@ -1,0 +1,63 @@
+<div class="bg">
+<main>
+    <div class="form-container mat-elevation-z5">
+      <h1>Sign-up</h1>
+      <main></main>
+      <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+  
+        <mat-form-field class="margin-top">
+          <input matInput placeholder="Enter your name" formControlName="name" />
+          <mat-error *ngIf="name?.errors?.['required']">Name is required</mat-error>
+          <mat-error *ngIf="name?.errors?.['pattern']">Enter your Name</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="margin-top">
+          <input matInput placeholder="Enter Your Email Address" formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+          <mat-error *ngIf="email?.errors?.['pattern']">email should be in '@' or .com</mat-error>
+          <!-- <mat-error *ngIf="email?.errors?.['emailexists']">this email is already in use??</mat-error> -->
+        </mat-form-field>
+  
+        <!-- --------------------------------------this is password field------------------------------------- -->
+  
+        <mat-form-field class="margin-top">
+          <input matInput [type]="showPassword1 ? 'text' : 'password'" placeholder="password" formControlName="password"
+            type="password" />
+          <mat-icon class="bottom" matSuffix (click)="showHidePassword1()">
+            {{showPassword1?'visibility_off':'visibility'}}
+          </mat-icon>
+  
+          <mat-error *ngIf="password?.errors?.['required']">password is <strong>required *</strong></mat-error>
+          <mat-error *ngIf="password?.errors?.['pattern']">password should be in A-Z, a-z, 1-9, '@,$,#,!' </mat-error>
+        </mat-form-field>
+  
+        <!-- --------------------------------------this is confirm password field------------------------------------- -->
+  
+        <mat-form-field class="margin-top">
+          <input matInput [type]="showPassword2? 'text' : 'password'" placeholder="confirm password"
+            formControlName="confirmPassword" type="password" />
+  
+          <mat-icon class="bottom" matSuffix (click)="showHidePassword2()">
+            {{showPassword2?'visibility_off':'visibility'}}
+          </mat-icon>
+  
+          <mat-error *ngIf="password?.errors?.['required']">confirm your password</mat-error>
+  
+       
+        </mat-form-field>
+        <mat-error *ngIf="signUpForm?.errors?.['passwordsDontMatch']">Passwords should match</mat-error>
+  
+  
+        <div class="center margin-top btn-signup">
+          <button mat-raised-button color="primary" [disabled]="signUpForm.invalid" type="submit">
+            Sign up!
+          </button>
+        </div>
+        <br>
+        <span class="center margin-top">Already Have an Account? then <a class="login-link" routerLink="/login">
+            Login now!
+          </a></span>
+      </form>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,68 @@
+<div class="bg">
+<main>
+    <div class="form-container mat-elevation-z5 text-center">
+        <h1>Update &nbsp; Profile</h1>
+        <br />
+        <div class="profile-image">
+            <img width="120" height="120" class="margin-top mat-elevation-z1"
+                src="../../../assets/image-placeholder.png" />
+            <!-- <button mat-mini-fab class="color" color="basic" (click)="inputField.click()">
+                <mat-icon>edit</mat-icon>
+            </button> -->
+        </div>
+        <input #inputField hidden type="file" />
+
+        <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="SaveProfile()">
+
+                <div class="row">
+                    <mat-form-field class="margin-top">
+                        <input type="text" matInput formControlName="firstName" placeholder="First Name" />
+                        <mat-error *ngIf="firstName?.errors?.['required']">First Name is Required *</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="margin-top"> 
+                        <input type="text" matInput formControlName="lastName" placeholder="Last Name" />
+                        <mat-error *ngIf="lastName?.errors?.['required']">Last Name is Required</mat-error>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="margin-top">
+                        <input type="text" matInput formControlName="displayName" placeholder="Display Name" />
+                        <mat-error *ngIf="displayName?.errors?.['required']">This field is Required</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="margin-top">
+                        <input matInput formControlName="phone" placeholder="Phone" />
+                        <mat-error *ngIf="phone?.errors?.['required']">Phone Number is Required</mat-error>
+                        <mat-error *ngIf="phone?.errors?.['pattern']">Enter a Valid Phone Number (ex. +919973742187)</mat-error>
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="margin-top">
+                        <textarea matInput formControlName="address" placeholder="Address"></textarea>
+                
+                        <mat-error *ngIf="address?.errors?.['minlength']">Address should be 25 character</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="margin-top">
+                        <input matInput [type]="showPassword ? 'text' : 'password'" matInput placeholder="See Your Password (you can't change your password)"
+                          formControlName="password" type="password" readonly="true"/>
+                
+                        <!-- <mat-error *ngIf="password?.errors?.['required']">password is required...?</mat-error>
+                
+                        <mat-error *ngIf="password?.errors?.['pattern']">password should be in A-Z, a-z, 1-9, '@,$,#,!' </mat-error> -->
+                
+                        <mat-icon class="bottom" matSuffix (click)="showHidePassword()">
+                          {{ showPassword ? "visibility_off" : "visibility" }}
+                        </mat-icon>
+                      </mat-form-field>
+                </div>
+
+
+            <button type="submit" class="margin-top save" mat-raised-button color="primary" [disabled]="profileForm.invalid">
+                Save
+            </button>
+        </form>
+    </div>
+</main>
+</div>

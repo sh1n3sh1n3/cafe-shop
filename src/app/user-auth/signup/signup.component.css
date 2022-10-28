@@ -1,0 +1,43 @@
+main {
+  padding: 5%;
+  font-family: monospace;
+}
+
+.bg {
+  background-image: url("../../../assets/photos/background.jpg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.space {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: monoton;
+  letter-spacing: 2px;
+  text-align: center;
+}
+button {
+  font-size: 20px;
+  font-family: monoton;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.login-link {
+  font-size: 1.3rem;
+  margin-left: 10px;
+  font-family: monospace;
+  color: teal;
+}
+
+span {
+  font-size: 18px;
+  font-weight: normal;
+  color: rgb(218, 47, 47);
+  letter-spacing: 1px;
+}

@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: monospace;
+}
+.form-container {
+  display: block;
+  max-width: 550px;
+  margin: auto;
+
+  background: #e4e9ec;
+  padding: 48px;
+  border-radius: 16px;
+}
+mat-form-field.mat-form-field {
+  font-size: 19px;
+}
+
+mat-divider{
+  border: 1px black ;
+}
+
+.form-container mat-form-field {
+  width: 100%;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.margin-top {
+  margin-top: 16px;
+  font-family: monospace;
+}
+.text-center {
+  text-align: center;
+}
+
+.btn-signup {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Monoton", cursive;
+  font-weight: lighter;
+  font-size: 15px;
+  color: rgb(246, 246, 246);
+}
+
+.bottom {
+  margin-bottom: 8px;
+}

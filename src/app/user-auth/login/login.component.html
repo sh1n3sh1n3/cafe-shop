@@ -1,0 +1,36 @@
+<div class="bg">
+<main>
+    <div class="form-container mat-elevation-z5">
+      <h1>login</h1>
+      <div class="space"></div>
+      <form [formGroup]="loginform" (ngSubmit)="login()">
+        <mat-form-field class="center margin-top">
+          <input matInput placeholder="Email Address" formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">please enter a valid email address</mat-error>
+          <mat-error *ngIf="email?.errors?.['pattern']">email should be in '@' or .com</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="margin-top">
+          <input matInput [type]="showPassword ? 'text' : 'password'" matInput placeholder="password"
+            formControlName="password" type="password" />
+  
+          <mat-error *ngIf="password?.errors?.['required']">password is required</mat-error>
+  
+          <mat-error *ngIf="password?.errors?.['pattern']">password should be in A-Z, a-z, 1-9, '@,$,#,!' </mat-error>
+  
+          <mat-icon class="bottom" matSuffix (click)="showHidePassword()">
+            {{ showPassword ? "visibility_off" : "visibility" }}
+          </mat-icon>
+        </mat-form-field>
+
+      <div class="space"></div>
+        <div class="center margin-top">
+          <button mat-raised-button color="primary" [disabled]="loginform.invalid" type="submit">Login</button>
+        </div>
+        <br>
+        </form>
+        <span class="center margin-top">New to our Cafe? Then --><a class="signup-link" routerLink="/signup">Sign Up</a></span>
+    </div>
+  </main>
+</div>
