@@ -31,22 +31,4 @@ export class AuthenticationService {
     return from(this.auth.signOut());
   }
 
-  // emailexists(email: any):Observable<boolean> {
-  //   return of(email).pipe(
-  //     delay(500),
-  //     map((email) => {
-  //       const emails = [this.auth, email , this.auth,!email];
-  //       return emails.includes(email);
-  //     })
-  //   );
-  // }
-
-  // uniqueEmailValidator(): AsyncValidatorFn {
-  //   return (control: AbstractControl): Observable<ValidationErrors | null> => {
-  //     return this.emailexists(control.value).pipe(
-  //       map((exists) => (exists ? { emailexists: true } : null)),
-  //       catchError(async () => null)
-  //     );
-  //   };
-  // }
 }
